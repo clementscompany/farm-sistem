@@ -1,0 +1,712 @@
+@import url("./index.css");
+
+html {
+  scroll-behavior: smooth;
+}
+
+#mainContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.loginContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.contentLogin {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formLogin {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  background-color: var(--card);
+  gap: 22px;
+  width: 400px;
+  animation: scaleUp .8s;
+}
+
+.logoTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--color);
+
+  i {
+    font-size: 33pt;
+  }
+}
+
+.textError {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  color: var(--textColor2);
+  font-size: 19px;
+  letter-spacing: 2px;
+  margin: 22px 0;
+  padding: 12px;
+  text-transform: capitalize;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow-wrap: break-word;
+}
+
+.textError.error span {
+  color: var(--error);
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.textError.success span {
+  color: var(--success);
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.inputs {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  margin: 12px 0;
+}
+
+.input input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+
+  & .is-invalid {
+    border: 1px solid var(--error);
+  }
+}
+
+.input input:focus {
+  outline: 1px solid var(--outline);
+}
+
+.input select {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+
+
+}
+
+.input select:focus {
+  outline: 1px solid var(--outline);
+}
+
+.input select option {
+  padding: 10px;
+  background-color: var(--card);
+  color: var(--color);
+}
+
+.input button {
+  width: 150px;
+  border-radius: 6px;
+  background-color: var(--button);
+  border: none;
+  padding: 16px;
+  color: var(--colorButton);
+}
+
+.input button:focus {
+  outline: 1px solid var(--outline);
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  .modalContent {
+    background-color: var(--card);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: scaleUp 0.3s ease-out;
+  }
+}
+
+.popUpError {
+  background-color: var(--baseColor);
+  color: var(--errorText);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1100;
+  text-align: center;
+  animation: bownce .2s linear;
+  min-width: 320px;
+  max-width: calc(50%);
+
+  .message {
+    margin-bottom: 20px;
+    font-size: 18px;
+    padding: 22px;
+  }
+
+  .reloadButton {
+    background-color: transparent;
+    color: var(--button);
+    border: 2px solid var(--button);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:focus {
+      outline: 1px solid var(--outline);
+      transform: scale(1.05);
+    }
+  }
+
+  .okButton {
+    background-color: var(--button);
+    color: var(--colorButton);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid var(--button);
+
+    &:focus {
+      outline: 1px solid var(--outline);
+      transform: scale(1.05);
+    }
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.spinnerComponent {
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .spinn {
+    border-radius: 50%;
+    padding: 22px;
+    border: 4px solid var(--button);
+    border-bottom: 4px solid transparent;
+    animation: spinnn .5s linear infinite;
+  }
+}
+
+.modalContent {
+  background-color: var(--card);
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  animation: bownce .6s linear;
+}
+
+#okButton {
+  margin-top: 12px;
+  background-color: var(--button);
+  color: var(--colorButton);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+
+  &:focus {
+    outline: 1px solid var(--outline);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spinnn {
+  form {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.5);
+  }
+
+  to {
+    transform: scale(1.0);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-30px);
+  }
+
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+/* ////////////// home */
+.homeContainer {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  position: relative;
+  height: 100%;
+  background-color: var(--baseColorSoft);
+  width: 100%;
+
+  .left {
+    background-color: var(--color);
+    max-width: 260px;
+    height: 100%;
+    padding: 12px;
+    color: var(--colorButton);
+
+    .topLeft {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+
+      i {
+        font-size: 33pt;
+      }
+    }
+
+    .menu {
+      margin-top: 50px;
+
+      ul {
+        li {
+          a {
+            display: block;
+            border-bottom: 1px solid var(--borderColor);
+            padding: 12px;
+            color: var(--colorButton);
+            transition: color 0.3s linear ease-in-out;
+            transition: all 0.3s linear ease-in-out;
+
+            &:hover {
+              background-color: var(--colorButton);
+              color: var(--color);
+            }
+
+            &.active {
+              background-color: var(--colorButton);
+              color: var(--color);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* // end  */
+
+  .rigthContainer {
+    padding: 12px;
+    width: 100%;
+
+    .topContainer {
+      background-color: var(--baseColor);
+      width: 100%;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
+
+      .inputBox {
+        background-color: var(--baseColorSoft);
+        padding: 8px;
+        border-radius: 8px;
+        width: 45%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+
+        input {
+          font-size: 14pt;
+          color: var(--textColor2);
+          padding: 6px;
+          border: none;
+          width: 100%;
+          border-radius: 8px;
+
+          &:focus {
+            outline: 2px solid var(--outline);
+          }
+        }
+
+        i {
+          color: var(--button);
+        }
+      }
+
+      /* //dataTime */
+      .dataTime {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        i {
+          font-size: 22pt;
+          color: var(--day);
+        }
+
+        .text {
+          h3 {
+            color: var(--color);
+          }
+
+          small {
+            color: var(--textColor2);
+          }
+        }
+      }
+
+
+      /* //avatar */
+      .avatar {
+        display: flex;
+        align-items: center;
+        background-color: var(--color);
+        padding: 8px;
+        border-radius: 8px;
+        position: relative;
+        padding-right: 33px;
+
+        .perfil {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 3px;
+          color: var(--colorButton);
+        }
+
+        button {
+          border: none;
+          padding: 3px 5px;
+          border-left: 1px solid var(--border);
+          position: absolute;
+          height: 100%;
+          right: -1px;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+
+          &:active {
+            outline: 2px solid var(--outline);
+          }
+
+          &:foccus {
+            outline: 2px solid var(--outline);
+          }
+        }
+      }
+    }
+
+    /* mainContent */
+    .mainContent {
+      background-color: var(--baseColor);
+      width: 100%;
+      height: calc(100vh - 100px);
+      margin-top: 12px;
+      overflow-y: auto;
+
+
+      @media screen and (max-width:800px) {
+        overflow-y: auto;
+        height: calc(100vh - 100px);
+      }
+    }
+  }
+
+}
+
+.contentDashboard {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cards {
+  flex: 1;
+  border: 1px solid var(--border);
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: var(--card);
+  box-shadow: 0 4px 8px var(--borderColor);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  min-width: 350px;
+}
+
+/* Efeito hover no card */
+.cards:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px var(--borderColor);
+}
+
+.cd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cd i {
+  font-size: 26pt;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+/* Títulos e valores */
+.cd h3 {
+  font-size: 12pt;
+  color: var(--textColor);
+}
+
+.cd h1 {
+  font-size: 18pt;
+  font-weight: bold;
+  color: var(--textColor2);
+}
+
+/* Botão */
+.btcd {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.btcd a {
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 6px;
+  display: block;
+  width: 100%;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Efeito hover do botão */
+.btcd a:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 5px var(--borderColor);
+}
+
+/* Cores dos ícones */
+.cards:nth-child(1) .cd i {
+  background: var(--color);
+  color: var(--baseColor);
+}
+
+.cards:nth-child(2) .cd i {
+  background: var(--success);
+  color: var(--baseColor);
+}
+
+.cards:nth-child(3) .cd i {
+  background: var(--day);
+  color: var(--baseColor);
+}
+
+.cards:nth-child(4) .cd i {
+  background: var(--error);
+  color: var(--baseColor);
+}
+
+/* Cores dos botões */
+.cards:nth-child(1) .btcd a {
+  background: var(--color);
+  color: var(--colorButton);
+}
+
+.cards:nth-child(2) .btcd a {
+  background: var(--success);
+  color: var(--baseColor);
+}
+
+.cards:nth-child(3) .btcd a {
+  background: var(--day);
+  color: var(--baseColor);
+}
+
+.cards:nth-child(4) .btcd a {
+  background: var(--error);
+  color: var(--baseColor);
+}
+
+.containerTable {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--textColor);
+      font-weight: 600;
+    }
+
+    button {
+      padding: 12px 22px;
+      background-color: var(--button);
+      color: var(--colorButton);
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+
+      &:focus {
+        transform: scale(1.02);
+      }
+
+      &:hover {
+        background-color: var(--hoverButton);
+      }
+    }
+  }
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th,
+  td {
+    border: 1px solid var(--border);
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: var(--button);
+    color: var(--colorButton);
+  }
+  tr:nth-child(even) {
+    background-color: var(--baseColorSoft);
+  }
+}
+
+.containerVendas {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1fr, 300px);
+}
+
+.clientBox {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: var(--baseColorSoft);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.clientBox .title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--textColor2);
+}
+
+.clientBox .span {
+  display: flex;
+  align-items: center;
+}
+
+.clientBox .icon {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-right: 10px;
+}
+
+.clientBox .clientName {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.clientBox .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clientBox .button:hover {
+  background-color: #0056b3;
+}
+
+.clientBox .buttonIcon {
+  font-size: 1.2rem;
+  margin-left: 5px;
+}
