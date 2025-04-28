@@ -484,7 +484,8 @@ html {
 }
 
 .cards {
-  flex: 1;
+  flex: 1 1 320px;
+  max-width: 400px;
   border: 1px solid var(--border);
   padding: 12px;
   text-align: center;
@@ -493,6 +494,10 @@ html {
   box-shadow: 0 4px 8px var(--borderColor);
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
   min-width: 350px;
+
+  @media screen and (max-width:905px) {
+    max-width: 100%;
+  }
 }
 
 /* Efeito hover no card */
@@ -609,17 +614,16 @@ html {
     }
 
     button {
-      padding: 12px 22px;
-      background-color: var(--button);
-      color: var(--colorButton);
+      padding: 8px 12px;
+      color: var(--textColor);
       border: none;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 500;
+      border: 2px solid transparent;
 
-      &:focus {
-        transform: scale(1.02);
+      &:active{
+        border: 2px solid var(--outline);
       }
-
       &:hover {
         background-color: var(--hoverButton);
       }
